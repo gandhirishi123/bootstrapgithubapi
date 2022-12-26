@@ -1,5 +1,11 @@
+document.getElementById('loader').style.display="block"
+document.getElementById('data').style.display="none"
+
+
 fetch('https://api.github.com/users').then(res=> res.json()).then(data=>{
     console.log(data);
+    document.getElementById('loader').style.display="none"
+    document.getElementById('data').style.display="block"
     data.forEach(user => {
         document.getElementById('data').innerHTML += `
         <div class="col-md-4 mb-4">
@@ -15,6 +21,6 @@ fetch('https://api.github.com/users').then(res=> res.json()).then(data=>{
         
     });
 
-}).catch(e=>{
+}).catch(e=>{ 
     console.log(e);
 })
